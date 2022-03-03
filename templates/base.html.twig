@@ -5,15 +5,95 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        <link rel="stylesheet" href="css/styles.css"
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+         <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+            
         {% endblock %}
 
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+           <script src="/js/scripts.js"></script> 
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="#!">Sport Shop</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">A propos</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#!">Tous les produits</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                
+                                <li><a class="dropdown-item" href="#!">Articles les plus commandés</a></li>
+                                <li><a class="dropdown-item" href="#">Nouveaux arrivages</a></li> <li> 
+                                 <a class="dropdown-item" style="background-color:green" href="{{path('create_article')}}"> 
+                   <button >créer un article</button></a>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+               
+               
+               
+                        <li>  <a class="dropdown-item" style="background-color:green" href="{{path('create_category')}}"> 
+                   <button >Ajouter une categorie</button></a>
+            </li> 
+         
+ 
+
+            {#  { % if(count($category_table) > 0)%}
+               {% for row in category_table %}
+             
+               
+               <li> <a  class= dropdown-item href="=#"> {$row.title>}</a></li> 
+               {% endfor %}
+               {% end if %} 
+                  #}
+
+                
+            
+    </ul>
+    </li>
+                    </ul>
+                    <form class="d-flex">
+                        <button class="btn btn-outline-dark" type="submit">
+                            <i class="bi-cart-fill me-1"></i>
+                            Cart
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        </button>
+                        {% if is_granted('ROLE_USER') %}
+                    <a href="/logout">Déconnexion</a>
+                    {% else %}
+                    <a href="/login ">Connexion</a>
+                    {% endif %} 
+                    </form>
+                </div>
+            </div>
+            
+                    
+        </nav>
+        {{ render(controller( 'App\\Controller\\MenuControllerList::list' )) }}
+        {% block body %}
+        
+        {% endblock %}
+         <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="assets/js/scripts.js"></script>
     </body>
 </html>
+    

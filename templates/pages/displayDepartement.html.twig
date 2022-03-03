@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+{% for departement in departements_list %}
+{{departement.nom}}
+{{departement.code}}
+{{departement.codeRegion}}
+{% endfor %}
+{% endblock %}

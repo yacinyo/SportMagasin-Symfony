@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body%}
+<h1> Création d'une Categorie </h1>
+<div class="form-group">
+{{form_start(formCategory)}}
+{{form_row(formCategory.name)}}
+{{form_row(formCategory.description)}}
+{{form_row(formCategory.image)}}
+ 
+ 
+
+
+{{form_end(formCategory)}}
+</div>
+
+
+{% endblock%}

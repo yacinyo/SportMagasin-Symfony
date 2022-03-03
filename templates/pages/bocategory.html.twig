@@ -1,0 +1,5 @@
+{% if is_granted('ROLE_USER') %}
+                    <a href="{{ path('category_edit', {'id': category.id}) }}">edit</a>
+                    {% else %}
+                    <a href="{{ path('category_show', {'id': category.id}) }}">show</a>
+                    {% endif %}

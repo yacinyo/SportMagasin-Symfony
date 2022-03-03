@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+ 
+{% block body %}
+<h1> Les marques </h1>
+
+{% for brandItem in brands_list %}
+ 
+
+ {% for articleItem  in brandItem.articles %}
+ {{articleItem.titre }}
+
+{% endfor %}
+
+{% endfor %}
+
+{% endblock %}
